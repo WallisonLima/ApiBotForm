@@ -1,9 +1,9 @@
 
 const puppeteer = require('puppeteer');
 const url = "https://share.hsforms.com/1ZiclL5e7RjyOUoW0M4LsgQ12ig9";
-const nomeParceiro = "Dr Mobile";
+const nomeParceiro = "Diego";
 const empresaParceiro = "Dr Mobile";
-const emailParceiro = "equipe@drmobile.com.br";
+const emailParceiro = "comercial@drmobile.com.br";
 
 
 class BotFormService {
@@ -74,22 +74,22 @@ class BotFormService {
             await page.select('#departamento-input', dados.departamento);
     
             await sleep(1000);
-            await page.select('#segmento-input', dados.segmento);
+            await page.select('#segmento-input', "Saúde");
     
             await sleep(1000);
-            await page.select('#company_size-input', dados.nmFuncionarios);
+            await page.select('#company_size-input', "250-999");
     
             await sleep(1000);
-            await page.select('#dor-input', dados.dor);
+            await page.select('#dor-input', "Atendimento");
             
             await sleep(1000);
-            await page.select('#volumetria-input', dados.volumetria);
+            await page.select('#volumetria-input', "Acima de 10.000 MAUs");
             
             await sleep(1000);
-            await page.select('#maturidade-input', dados.maturidade);
+            await page.select('#maturidade-input', "1 - Entendia pouco da solução, mas foi educado sobre o assunto na qualificação");
             
             await sleep(1000);
-            await page.select('#planos_blip-input', dados.plano);
+            await page.select('#planos_blip-input', "Super");
     
             resolve(page)
         })
@@ -98,7 +98,7 @@ class BotFormService {
     async clickBoxIndicado(page){
         return new Promise(async (resolve, reject) => {
             await sleep(1000);
-            await clickByAttr(page, 'id', 'funcao_no_projeto-input-4');
+            await clickByAttr(page, 'id', 'funcao_no_projeto-input-1');
     
             await sleep(1000);
             await clickByAttr(page, 'id', 'em_quais_canais_voce_tem_conta_comercial_-input-1');

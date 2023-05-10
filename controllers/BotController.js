@@ -1,10 +1,12 @@
 const help = require("../helpers")
+const db = require('../database');
 const tokenAuthorization = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRHJNb2JpbGUgR2F0ZUtlZXBlciIsInN1YiI6IjIiLCJpYXQiOjE2ODI3MTcxNTQsImV4cCI6MTY4MjgwMzU1NH0.5Bs2t0QyGo8mn5nDucgn_Z5-RtlVf1l8bfaq2oHBX6YDRMOBILE";
-
 const botService = require('../services/botService')
 
 class BotForm {
     async post(req, res) {
+
+        await db.insertDB('users', req.body)
 
         let resp = await validToken(req.headers.authorization)
         if (resp) {
@@ -26,13 +28,7 @@ class BotForm {
             cargo: req.body.cargo,
             departamento: req.body.departamento,
             empresa: req.body.empresa,
-            siteEmpresa: req.body.siteEmpresa,
-            segmento: req.body.segmento,
-            nmFuncionarios: req.body.nmFuncionarios,
-            dor: req.body.dor,
-            volumetria: req.body.volumetria,
-            maturidade: req.body.maturidade,
-            plano: req.body.plano
+            siteEmpresa: req.body.siteEmpresa
         }
 
         let page = await botService.launch();
@@ -44,13 +40,13 @@ class BotForm {
         page = await botService.insereDadosParceiro(page);
 
         page = await botService.insereDadosIndicado(page, dados);
-        
+
         page = await botService.selecionaDadosIndicado(page, dados);
-    
+
         page = await botService.clickBoxIndicado(page, dados);
-    
+
         // await clickByAttr(page, "type", "submit")
-    
+
     }
 
 }
@@ -177,7 +173,7 @@ async function validToken(token) {
 
 async function validReq(body) {
     return new Promise(async (resolve, reject) => {
-        if (body.nome && body.nome !== "" && body.sobreNome && body.sobreNome !== "" && body.email && body.email !== "" && body.cargo && body.cargo !== "" && body.departamento && body.departamento !== "" && body.empresa && body.empresa !== "" && body.siteEmpresa && body.siteEmpresa !== "" && body.segmento && body.segmento !== "" && body.nmFuncionarios && body.nmFuncionarios !== "" && body.dor && body.dor !== "" && body.volumetria && body.volumetria !== "" && body.maturidade && body.maturidade !== "" && body.plano && body.plano !== "") {
+        if (body.nome && body.nome !== "" && body.sobreNome && body.sobreNome !== "" && body.email && body.email !== "" && body.cargo && body.cargo !== "" && body.departamento && body.departamento !== "" && body.empresa && body.empresa !== "" && body.siteEmpresa && body.siteEmpresa !== "" && body.telefone && body.telefone !== "") {
             resolve();
             return;
         }

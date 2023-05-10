@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const fs = require('fs')
-const port = 8080
+const { PORT } = require('./constants');
 
 
 const app = express();
@@ -13,6 +13,6 @@ app.use(bodyParser.json())
 
 app.use(routes)
 
-app.listen(port, () => {
-    console.log(`Example app listening at :${port}`)
+app.listen(PORT, () => {
+    console.log(`Example app listening at :${PORT}`)
 })
