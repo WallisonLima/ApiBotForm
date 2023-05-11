@@ -34,7 +34,7 @@ class BotForm {
 
         let page = await botService.launch();
         if (!page) {
-            resolve(await help.messageError(500, 'Browser default', ''))
+            res.send(await help.messageError(500, 'Browser default', ''))
             return;
         }
 
