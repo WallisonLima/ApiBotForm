@@ -1,12 +1,12 @@
 const help = require("../helpers")
-const db = require('../database');
+// const db = require('../database');
 const tokenAuthorization = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRHJNb2JpbGUgR2F0ZUtlZXBlciIsInN1YiI6IjIiLCJpYXQiOjE2ODI3MTcxNTQsImV4cCI6MTY4MjgwMzU1NH0.5Bs2t0QyGo8mn5nDucgn_Z5-RtlVf1l8bfaq2oHBX6YDRMOBILE";
 const botService = require('../services/botService')
 
 class BotForm {
     async post(req, res) {
 
-        await db.insertDB('users', req.body)
+        // await db.insertDB('users', req.body)
 
         let resp = await validToken(req.headers.authorization)
         if (resp) {
