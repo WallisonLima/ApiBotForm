@@ -14,7 +14,7 @@ class BotFormService {
                 let page = await browser.pages()
                 page = page[0]
                 await page.goto(url)
-                resolve(page)
+                resolve({page, browser})
             } catch (e) {
                 console.log("Erro " + e)
                 resolve()

@@ -32,7 +32,7 @@ class BotForm {
             siteEmpresa: req.body.siteEmpresa
         }
 
-        let page = await botService.launch();
+        let { page, browser } = await botService.launch();
         if (!page) {
             res.send(await help.messageError(500, 'Browser default', ''))
             return;
@@ -45,6 +45,12 @@ class BotForm {
         page = await botService.selecionaDadosIndicado(page, dados);
 
         page = await botService.clickBoxIndicado(page, dados);
+
+        browser.disconnect();
+
+        console.log("Processo finalizado")
+        await res.send(help.messageError(200, 'Process concluded!', ''))
+        return;
 
         // await clickByAttr(page, "type", "submit")
 
