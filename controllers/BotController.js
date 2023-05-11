@@ -7,6 +7,7 @@ class BotForm {
     async post(req, res) {
 
         // await db.insertDB('users', req.body)
+        console.log(req.body)
 
         let resp = await validToken(req.headers.authorization)
         if (resp) {
