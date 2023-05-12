@@ -10,50 +10,51 @@ class BotForm {
         console.log('Iniciando')
         console.log(req.body)
 
-        // let resp = await validToken(req.headers.authorization)
-        // if (resp) {
-        //     res.send(resp);
-        //     return;
-        // }
+        let resp = await validToken(req.headers.authorization)
+        if (resp) {
+            res.send(resp);
+            return;
+        }
 
-        // resp = await validReq(req.body)
-        // if (resp) {
-        //     res.send(resp)
-        //     return;
-        // }
+        resp = await validReq(req.body)
+        if (resp) {
+            res.send(resp)
+            return;
+        }
 
 
-        // const dados = {
-        //     nome: req.body.nome,
-        //     sobreNome: req.body.sobreNome,
-        //     email: req.body.email,
-        //     cargo: req.body.cargo,
-        //     departamento: req.body.departamento,
-        //     empresa: req.body.empresa,
-        //     siteEmpresa: req.body.siteEmpresa
-        // }
+        const dados = {
+            nome: req.body.nome,
+            sobreNome: req.body.sobreNome,
+            email: req.body.email,
+            cargo: req.body.cargo,
+            departamento: req.body.departamento,
+            empresa: req.body.empresa,
+            siteEmpresa: req.body.siteEmpresa
+        }
 
-        // let { page, browser } = await botService.launch();
-        // if (!page) {
-        //     res.send(await help.messageError(500, 'Browser default', ''))
-        //     return;
-        // }
+        let { page, browser } = await botService.launch();
+        if (!page) {
+            res.send(await help.messageError(500, 'Browser default', ''))
+            return;
+        }
 
-        // page = await botService.insereDadosParceiro(page);
+        page = await botService.insereDadosParceiro(page);
 
-        // page = await botService.insereDadosIndicado(page, dados);
+        page = await botService.insereDadosIndicado(page, dados);
 
-        // page = await botService.selecionaDadosIndicado(page, dados);
+        page = await botService.selecionaDadosIndicado(page, dados);
 
-        // page = await botService.clickBoxIndicado(page, dados);
+        page = await botService.clickBoxIndicado(page, dados);
+        
+        // await clickByAttr(page, "type", "submit")
 
-        // browser.disconnect();
+        await browser.disconnect();
 
         console.log("Processo finalizado")
-        await res.send(help.messageError(200, 'Process concluded!', ''))
+        await res.send(await help.messageError(200, 'Process concluded!', ''))
         return;
 
-        // await clickByAttr(page, "type", "submit")
 
     }
 
