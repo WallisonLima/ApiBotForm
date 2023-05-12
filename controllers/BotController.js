@@ -86,3 +86,14 @@ async function validReq(body) {
         return;
     })
 }
+
+async function clickByAttr(page, attr, value, number = 0) {
+    return new Promise(async (resolve, reject) => {
+        let el = await page.$x("//*[@" + attr + "='" + value + "']")
+        if (el.length > 0) {
+            resolve(await el[number].click())
+        } else {
+            resolve(console.log('não encontrado ' + attr))
+        }
+    })
+}
