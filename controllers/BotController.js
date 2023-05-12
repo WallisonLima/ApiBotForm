@@ -47,14 +47,12 @@ class BotForm {
 
         page = await botService.clickBoxIndicado(page, dados);
         
-        // await clickByAttr(page, "type", "submit")
+        await clickByAttr(page, "type", "submit")
 
         await browser.disconnect();
 
         console.log("Processo finalizado")
         await res.send(await help.messageError(200, 'Process concluded!', ''))
-        return;
-
 
     }
 

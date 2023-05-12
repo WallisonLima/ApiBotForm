@@ -10,7 +10,7 @@ class BotFormService {
     async launch() {
         return new Promise(async (resolve, reject) => {
             try {
-                const browser = await puppeteer.launch({ headless: false, dumpio: true })
+                const browser = await puppeteer.launch({ headless: true, dumpio: true })
                 let page = await browser.pages()
                 page = page[0]
                 await page.goto(url)
