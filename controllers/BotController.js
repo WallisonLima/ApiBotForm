@@ -34,6 +34,8 @@ class BotForm {
             siteEmpresa: req.body.siteEmpresa
         }
 
+        console.log(dados)
+
         let { page, browser } = await botService.launch();
         if (!page) {
             res.send(await help.messageError(500, 'Browser default', ''))
@@ -48,7 +50,7 @@ class BotForm {
 
         page = await botService.clickBoxIndicado(page, dados);
         
-        await clickByAttr(page, "type", "submit")
+        // await clickByAttr(page, "type", "submit")
 
         await browser.disconnect();
 
