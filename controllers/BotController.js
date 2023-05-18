@@ -28,6 +28,7 @@ class BotForm {
             sobreNome: req.body.sobreNome,
             email: req.body.email,
             cargo: req.body.cargo,
+            cargoOutro: req.body.cargoOutro,
             departamento: req.body.departamento,
             empresa: req.body.empresa,
             siteEmpresa: req.body.siteEmpresa

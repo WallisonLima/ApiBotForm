@@ -70,6 +70,12 @@ class BotFormService {
         return new Promise(async (resolve, reject) => {
             await sleep(1000);
             await page.select('#cargo-input', dados.cargo);
+
+            if(dados.cargoOutro !== null && dados.cargoOutro !== ""){
+                await sleep(1000);
+                await clickByAttr(page, 'id', 'jobtitle-input');
+                await page.keyboard.type(dados.cargoOutro);
+            }
     
             await sleep(1000);
             await page.select('#departamento-input', dados.departamento);
