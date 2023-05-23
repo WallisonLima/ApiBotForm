@@ -5,13 +5,9 @@
     "mongodb": "^5.4.0",
     "nodemon": "^2.0.22",
     "puppeteer": "^19.11.1"
-<<<<<<< HEAD
   }, 
-=======
-  },
->>>>>>> cb402484429ee1412a972b5414fee73bac25611d
   "scripts": {
     "start": "nodemon server.js",
-    "dev": "nodemon server.js"
+    "dev": "node server.js"
   }
 }
