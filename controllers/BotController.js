@@ -57,6 +57,11 @@ class BotForm {
 
     }
 
+    async onServer(req, res){
+        console.log('Processo ok')
+        await res.send(await help.messageError(200, 'Process ok!', ''))
+    }
+
 }
 
 
